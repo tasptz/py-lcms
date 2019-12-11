@@ -1,0 +1,6 @@
+[submodule "ext/pybind11"]
+	path = ext/pybind11
+	url = https://github.com/pybind/pybind11.git
+[submodule "ext/Little-CMS"]
+	path = ext/Little-CMS
+	url = https://github.com/mm2/Little-CMS.git
