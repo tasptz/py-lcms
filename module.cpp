@@ -64,7 +64,7 @@ void applyProfile(
         t.t,
         inputImage.data(0, 0, 0),
         outputImage.mutable_data(0, 0, 0),
-        inputImage.shape(0) * inputImage.shape(1)
+        static_cast<cmsUInt32Number>(inputImage.shape(0) * inputImage.shape(1))
     );
 }
 
