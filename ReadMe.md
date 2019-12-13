@@ -1,4 +1,4 @@
-# Python Little CMS
+# Python Little CMS ![Travis CI build status](https://api.travis-ci.com/tasptz/py-lcms.svg?branch=master)
 A minimalistic module to utilize [Little CMS](http://littlecms.com) to apply color profiles to 16 bit TIFF
 images.
 
