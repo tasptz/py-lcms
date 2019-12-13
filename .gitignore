@@ -1,0 +1,4 @@
+_skbuild
+__pycache__
+*.pyd
+_cmake*
