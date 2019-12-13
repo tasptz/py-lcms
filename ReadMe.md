@@ -1,5 +1,5 @@
 # Python Little CMS
-Utilize [Little CMS](http://littlecms.com) to apply color profiles to 16 bit TIFF
+A minimalistic module to utilize [Little CMS](http://littlecms.com) to apply color profiles to 16 bit TIFF
 images.
 
 ## Motivation
