@@ -7,6 +7,7 @@ matrix:
     - choco install python --version=3.6.8
     - /c/Python36/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
+    - python -m pip install --upgrade pip
     env:
     - CMAKE_GENERATOR: "\"Visual Studio 15 2017 Win64\""
   - os: linux
