@@ -19,4 +19,5 @@ install:
 - pip install -r build-requirements.txt
 - python setup.py install
 script:
+- pip install -r requirements.txt
 - pytest tests
