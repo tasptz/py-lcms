@@ -18,7 +18,7 @@ python setup.py bdist_wheel --build-type Release
 Then install the wheel present in the `dist` folder.
 
 ## Example
-To runt he example you need a 16 bit TIFF image and a color profile, for example
+To run the example you need a 16 bit TIFF image and a color profile, for example
 a `*.icm` file.
 Then run
 ```
