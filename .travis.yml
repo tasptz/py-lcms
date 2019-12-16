@@ -4,9 +4,8 @@ matrix:
   - os: windows
     language: sh
     before_install:
-      - choco install python --version=3.6
-      - export PATH="/c/Python36:/c/Python36/Scripts:$PATH"
-      - virtualenv $HOME/venv
+      - choco install python --version=3.6.8
+      - /c/Python36/python -m venv $HOME/venv
       - source $HOME/venv/Scripts/activate
   - os: linux
     language: python
