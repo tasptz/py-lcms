@@ -1,7 +1,15 @@
-language: python
 python: "3.6"
-os:
-  - linux
+matrix:
+  include:
+  - os: windows
+    language: sh
+    before_install:
+      - choco install python --version=3.6
+      - export PATH="/c/Python36:/c/Python36/Scripts:$PATH"
+      - virtualenv $HOME/venv
+      - source $HOME/venv/Scripts/activate
+  - os: linux
+    language: python
 branches:
   only:
   - master
