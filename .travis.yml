@@ -8,7 +8,7 @@ matrix:
     - /c/Python36/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
     env:
-    - CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
+    - CMAKE_GENERATOR: "\"Visual Studio 15 2017 Win64\""
   - os: linux
     language: python
 branches:
