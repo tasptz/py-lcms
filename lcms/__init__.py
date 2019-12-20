@@ -1,7 +1,7 @@
 import numpy as np
 from . import pylcms
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 def apply_profile(input_image, input_profile, output_profile='srgb', in_place=False):
     if in_place:
