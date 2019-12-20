@@ -44,19 +44,35 @@ Profile getProfile(const std::string &profileId) {
     }
 }
 
+const std::map<py::dtype, cmsUInt32Number> dataTypes {
+    {py::dtype("uint8"), TYPE_RGB_8},
+    {py::dtype("uint16"), TYPE_RGB_16},
+    {py::dtype("float32"), TYPE_RGB_FLT}
+};
+
+cmsUInt32Number getDataType(const py::dtype &dtype) {
+    try {
+        return dataTypes.at(dtype);
+    }
+    catch (std::out_of_range &) {
+        throw std::domain_error(std::string(py::str(static_cast<const py::object &>(dtype))) + " not implemented");
+    }
+}
+
 void applyProfile(
-        const py::array_t<uint16_t> inputImage,
-        py::array_t<uint16_t> outputImage,
+        const py::array inputImage,
+        py::array outputImage,
         const std::string &inputProfile,
         const std::string &outputProfile) {
-    
     Profile ip(getProfile(inputProfile));
     Profile op(getProfile(outputProfile));
+    cmsUInt32Number inputDataType = getDataType(inputImage.dtype());
+    cmsUInt32Number outputDataType = getDataType(outputImage.dtype());
     Transform t(cmsCreateTransform(
         ip.p,
-        TYPE_RGB_16,
+        inputDataType,
         op.p,
-        TYPE_RGB_16,
+        outputDataType,
         INTENT_PERCEPTUAL,
         0
     ));
