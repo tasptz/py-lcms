@@ -50,7 +50,7 @@ const std::map<py::dtype, cmsUInt32Number> dataTypes {
     {py::dtype("float32"), TYPE_RGB_FLT}
 };
 
-cmsUInt32Number getDataType(py::dtype &dtype) {
+cmsUInt32Number getDataType(const py::dtype &dtype) {
     try {
         return dataTypes.at(dtype);
     }
