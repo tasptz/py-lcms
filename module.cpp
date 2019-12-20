@@ -55,7 +55,7 @@ cmsUInt32Number getDataType(const py::dtype &dtype) {
         return dataTypes.at(dtype);
     }
     catch (std::out_of_range &) {
-        throw std::domain_error(std::string(py::str(dtype)) + " not implemented");
+        throw std::domain_error(std::string(py::str(static_cast<const py::object &>(dtype))) + " not implemented");
     }
 }
 
