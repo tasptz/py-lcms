@@ -11,6 +11,7 @@ setup(
     version='0.2.0',
     description='A minimalistic module to utilize Little CMS (http://littlecms.com) to apply color profiles to 16 bit TIFF images',
     long_description=description,
+    long_description_content_type='text/markdown',
     author='Thomas Pönitz',
     author_email='tasptz@gmail.com',
     url='https://github.com/tasptz/py-lcms',
