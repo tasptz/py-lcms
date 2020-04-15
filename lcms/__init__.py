@@ -1,5 +1,6 @@
 import numpy as np
 from . import pylcms
+from .pylcms import Transformer
 
 __version__ = '0.2.0'
 

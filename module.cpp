@@ -2,7 +2,6 @@
 #include <pybind11/numpy.h>
 #include <lcms2.h>
 #include <map>
-#include <iostream>
 #include <memory>
 
 namespace py = pybind11;
@@ -59,6 +58,28 @@ cmsUInt32Number getDataType(const py::dtype &dtype) {
     }
 }
 
+void doTransform(Transform &t, const py::array &inputImage, py::array &outputImage) {
+#ifdef THREADS
+    const int lines = static_cast<int>(inputImage.shape(0));
+    #pragma omp parallel for num_threads(THREADS) schedule(static)
+    for (int i = 0; i < lines; ++i) {
+        cmsDoTransform(
+            t.t,
+            inputImage.data(i, 0, 0),
+            outputImage.mutable_data(i, 0, 0),
+            static_cast<cmsUInt32Number>(inputImage.shape(1))
+        );
+    }
+#else
+    cmsDoTransform(
+        t.t,
+        inputImage.data(0, 0, 0),
+        outputImage.mutable_data(0, 0, 0),
+        static_cast<cmsUInt32Number>(inputImage.shape(0) * inputImage.shape(1))
+    );
+#endif
+}
+
 void applyProfile(
         const py::array inputImage,
         py::array outputImage,
@@ -76,14 +97,44 @@ void applyProfile(
         INTENT_PERCEPTUAL,
         0
     ));
-    cmsDoTransform(
-        t.t,
-        inputImage.data(0, 0, 0),
-        outputImage.mutable_data(0, 0, 0),
-        static_cast<cmsUInt32Number>(inputImage.shape(0) * inputImage.shape(1))
+    doTransform(
+        t,
+        inputImage,
+        outputImage
     );
 }
 
+struct Transformer {
+    Transformer(const std::string &inputType, const std::string &outputType, const std::string &inputProfile, const std::string &outputProfile) :
+        ip(getProfile(inputProfile)),
+        op(getProfile(outputProfile)),
+        t(cmsCreateTransform(
+            ip.p,
+            getDataType(py::dtype(inputType)),
+            op.p,
+            getDataType(py::dtype(outputType)),
+            INTENT_PERCEPTUAL,
+            0
+        )) {
+
+    }
+
+    void apply(const py::array inputImage, py::array outputImage) {
+        doTransform(
+            t,
+            inputImage,
+            outputImage
+        );
+    }
+
+    Profile ip;
+    Profile op;
+    Transform t;
+};
+
 PYBIND11_MODULE(pylcms, m) {
     m.def("apply_profile", &applyProfile);
+    py::class_<Transformer>(m, "Transformer")
+        .def(py::init<const std::string &, const std::string &, const std::string &, const std::string &>())
+        .def("apply", &Transformer::apply);
 }

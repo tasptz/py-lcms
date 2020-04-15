@@ -1,4 +1,7 @@
 python: "3.6"
+env:
+  - ""
+  - LCMS_THREADS=4
 matrix:
   include:
   - os: windows
