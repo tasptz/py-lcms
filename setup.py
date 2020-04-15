@@ -8,7 +8,7 @@ with open('ReadMe.md') as f:
 
 setup(
     name='lcms',
-    version='0.2.0',
+    version='0.3.0',
     description='A minimalistic module to utilize Little CMS (http://littlecms.com) to apply color profiles to 16 bit TIFF images',
     long_description=description,
     long_description_content_type='text/markdown',
