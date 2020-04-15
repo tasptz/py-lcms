@@ -2,7 +2,7 @@ import numpy as np
 from . import pylcms
 from .pylcms import Transformer
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 def apply_profile(input_image, input_profile, output_profile='srgb', in_place=False):
     if in_place:
