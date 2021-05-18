@@ -7,7 +7,7 @@ Currently there seems to be no python packages available to apply color profiles
 to 16 bit TIFF images.
 [Pillow](https://pillow.readthedocs.io/en/stable/reference/ImageCms.html) has
 built in support for [Little CMS](http://littlecms.com), but does currently
-not have [16 bit support](https://pillow.readthedocs.io/en/5.1.x/handbook/concepts.html#modes)
+not have [16 bit support](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#modes)
 for RGB images.
 
 ## Installation
