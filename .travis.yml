@@ -3,14 +3,14 @@ jobs:
   - os: windows
     language: shell
     before_install:
-    - choco install python --version=3.6.8
+    - choco install python --version=3.8.11
     - /c/Python36/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
     - python -m pip install --upgrade pip
     env: CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
   - os: linux
     language: python
-    python: "3.6"
+    python: "3.8"
     deploy:
       provider: pypi
       user: "__token__"
@@ -19,7 +19,7 @@ jobs:
       skip_existing: true
   - os: linux
     language: python
-    python: "3.6"
+    python: "3.8"
     env: LCMS_THREADS=4
 branches:
   only:
