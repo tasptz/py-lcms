@@ -3,7 +3,7 @@ jobs:
   - os: windows
     language: shell
     before_install:
-    - choco install python --version=3.8.11
+    - choco install python
     - /c/Python36/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
     - python -m pip install --upgrade pip
