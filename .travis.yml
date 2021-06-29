@@ -6,7 +6,7 @@ jobs:
     - choco install python --version 3.9.6
     - /c/Python39/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
-    - python -m pip install --upgrade pip
+    - python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip setuptools
     env: CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
   - os: linux
     language: python
