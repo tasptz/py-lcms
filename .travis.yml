@@ -14,8 +14,7 @@ jobs:
     deploy:
       provider: pypi
       user: "__token__"
-      password:
-        secure: "f15F+HQhViB4UHoVs90GpbfPirUwTwugMp7tAs7sWPzQ7+9VEM+KTWeYnaUXnM9GO4zULtflOPRF4ViEhQyc7/M//9v99WKmKuBOPEtXvC8kPpbDwY/DWGw4ms/1yLrpkCTUW1RLXrACgMtD3tyJ3Z0NHyENMzDE3HMxud8qKNwwml3vtvf584Q1C6XDUHY3bZjUSwHw/1/nCja1SfmvdLvW8zvma9phRjbz86OKqWAHzn7LAKwEdKDi1dis3PfVmNwHzwYD2lFoZ331LhrtfKmy7K8+ki6wvaDvPY+hrT3BcWBJsrBWnD0sPbp+YUviVLf7QYF8AJAl3KCCh/H9dbtafcMiShvfAgzOMKLMEuo7S66v+DsjBZ5Qgkalp2yYa+beutOUI5NZUbH3LQ69VGFcII4VDTKvSzQ7LWnZR4jnQ8skfjDQkUr4nWK2cr7M4IX7rTv45kUp8u13UKrzq8PI11vzpiNfIdeKJBL+AdRfsk2d878U1hYc5bEZ8DU3bDyLHdd4diEDEq/xZh1jhOH23wZmrFtNjb0EHh4SL8fABiEFIvUQ4xBcPo9dCytAqEMskuvrjK8vysgaaWfv1GiPeR99SdIilEEdAOrFypX83MGs9/J67QxH94kUS7NcZFJ+Vcv/cmIiQ/V7phqLZbVv4n+Ax1vbyYNSR3Li0BQ="
+      password: "$PYPI_TOKEN"
       distributions: "sdist"
       skip_existing: true
   - os: linux
