@@ -3,8 +3,8 @@ jobs:
   - os: windows
     language: shell
     before_install:
-    - choco install python --version 3.9.6
-    - /c/Python39/python -m venv $HOME/venv
+    - choco install python --version 3.7.9
+    - /c/Python37/python -m venv $HOME/venv
     - source $HOME/venv/Scripts/activate
     - python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --upgrade pip setuptools "numpy>=1.20"
     env: CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
