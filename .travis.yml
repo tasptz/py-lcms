@@ -10,7 +10,7 @@ jobs:
     env: CMAKE_GENERATOR="Visual Studio 15 2017 Win64"
   - os: linux
     language: python
-    python: "3"
+    python: "3.9"
     deploy:
       provider: pypi
       user: "__token__"
@@ -21,7 +21,7 @@ jobs:
         branch: master
   - os: linux
     language: python
-    python: "3"
+    python: "3.9"
     env: LCMS_THREADS=4
 branches:
   only:
